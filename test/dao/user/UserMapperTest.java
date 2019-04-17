@@ -31,6 +31,10 @@ class UserMapperTest {
 			UserMapper mapper = sqlSession.getMapper(UserMapper.class);		
 			User user = mapper.selectById(5);
 			System.out.println(user.toString());
+			/*
+			 * mapper.updateUser(new User(2, "±∆", "¿º¿Ó", "≈Æ", "4321", "500382199804247456",
+			 * "123@qq.com", new Date(), "1311313131", ""));
+			 */
 			
 			
 		} catch (IOException e) {

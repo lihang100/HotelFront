@@ -10,9 +10,17 @@
  	
  	</resultMap>
 
- 
+ 	<!-- 根据id查询对象 -->
  	<select id="selectById" parameterType="int"  resultMap="userMap">	
  	SELECT * FROM user WHERE uid=#{id}
  	</select>
+ 	<!-- 修改对象 -->
+ 	<select id="updateUser" parameterType="user" >
+ 	UPDATE USER SET 
+ 	utruename=#{utruename}, ugender=#{ugender},
+ 	uidentity=#{uidentity},uemail=#{uemail},uborn=#{uborn},uphone=#{uphone},upicture=#{upicture}
+ 	 WHERE uid=#{uid}
  	
+ 
+ 	</select>
  </mapper>
