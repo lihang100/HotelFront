@@ -10,9 +10,13 @@ import pojo.User;
 
 public interface UserMapper {
 
-	//¸ù¾Ýid²éÑ¯¶ÔÏó
+	//ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	User selectById(int id);
-	//ÐÞ¸Ä
+	//ï¿½Þ¸ï¿½
 	void updateUser(User user);
+	//æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·
+	List<User> selectAll();
+	//æ·»åŠ ç”¨æˆ·
+	void addUser(User user);
 	
 }

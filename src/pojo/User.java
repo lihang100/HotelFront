@@ -87,10 +87,14 @@ public class User {
 		this.uphone = uphone;
 		this.upicture = upicture;
 	}
+	
+	public User() {
+		super();
+	}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "ÐÕÃû"+this.uname;
+		return "ï¿½ï¿½ï¿½ï¿½"+this.uname;
 	}
 	
 

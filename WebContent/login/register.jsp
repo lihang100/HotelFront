@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>jQuery带背景切换登录注册表单</title>
+<title>注册</title>
 <link rel="stylesheet" href="css/style.css" />
 <body>
 
@@ -21,8 +21,8 @@
 			<input type="text" name="username" class="username" placeholder="您的用户名" autocomplete="off"/>
 		</div>
 		<div>
-			<input type="password                                                                                                                                                                                                                                                                       " name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
-		</div>、
+			<input type="password" name="password" class="password" placeholder="输入密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
 		<div>
 			<input type="password" name="confirm_password" class="confirm_password" placeholder="再次输入密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
@@ -57,5 +57,20 @@
 <!--表单验证-->
 <script src="js/jquery.validate.min.js?var1.14.0"></script>
 
+<script>
+	$("#submit").click(function(){
+		var formArr = $("#registerForm").serializeArray();
+		console.log(formArr);
+		$.getJSON("../registerServlet",formArr,function(data){
+			
+			if(data.result=="正确"){
+				
+				window.location.href="login.jsp";
+			}else{
+				alert("注册失败");
+			}
+		});
+	})
+</script>
 </body>
 </html>

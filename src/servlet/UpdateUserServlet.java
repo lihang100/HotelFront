@@ -21,7 +21,7 @@ public class UpdateUserServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		System.out.println("进去");
+		System.out.println("鎴愬姛");
 		int uid = Integer.parseInt(request.getParameter("uid"));
 	
 		String uname =" ";
@@ -41,7 +41,7 @@ public class UpdateUserServlet extends HttpServlet {
 		 us.updateUser(new User(uid, uname, utruename, ugender, upassword, uidentity, uemail, date, uphone, upicture));
 		//{"name":name,"id":id,"user":["uid":uid]}
 		PrintWriter out = response.getWriter();
-		String s ="{\"result\":\"正确\"}";
+		String s ="{\"result\":\"姝ｇ‘\"}";
 		System.out.println(s);
 		System.out.println(uemail+" xxx"+uphone);
 		out.print(s);

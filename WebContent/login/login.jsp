@@ -22,12 +22,12 @@
 	
 	<form action="" method="post" id="loginForm">
 		<div>
-			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
+			<input value="233affd5@163.com" type="text" name="username" class="username" placeholder="邮箱" autocomplete="off"/>
 		</div>
 		<div>
-			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+			<input value="123456" type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
 		</div>
-		<button id="submit" type="submit">登 陆</button>
+		<button id="submit" type="button">登 录</button>
 	</form>
 
 	<a href="register.jsp">
@@ -44,5 +44,20 @@
 <!--表单验证-->
 <script src="js/jquery.validate.min.js?var1.14.0"></script>
 
+<script>
+	$("#submit").click(function(){
+		var uemail = $("input[name=username]").val();
+		var upassword = $("input[name=password]").val();
+		$.getJSON("../loginServlet",{"uemail":uemail,"password":upassword},function(data){
+			
+			if(data.result=="正确"){
+				
+				window.location.href="../cpts/home.jsp";
+			}else{
+				alert("邮箱账号或密码不正确");
+			}
+		});
+	})
+</script>
 </body>
 </html>

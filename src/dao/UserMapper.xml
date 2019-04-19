@@ -20,7 +20,15 @@
  	utruename=#{utruename}, ugender=#{ugender},
  	uidentity=#{uidentity},uemail=#{uemail},uborn=#{uborn},uphone=#{uphone},upicture=#{upicture}
  	 WHERE uid=#{uid}
- 	
- 
+ 	</select>
+ 	<!-- 查所有用户。傅 -->
+ 	<select id="selectAll" resultType="user">
+ 		select * from user
+ 	</select>
+ 	<!-- 添加用户 -->
+ 	<select id="addUser" parameterType="user" >
+ 		INSERT INTO `user`(uname,utruename,ugender,upassword,uidentity,uemail,uphone) 
+ 		VALUES(#{uname},'',#{ugender},#{upassword},#{uidentity},#{uemail},#{uphone})
+ 		
  	</select>
  </mapper>

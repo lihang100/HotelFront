@@ -11,7 +11,7 @@
 	 <typeAliases>
 	 	<package name="pojo"/>
 	 	<package name="dao"/>
-	 
+	 	<package name="utile"/>
 	 </typeAliases>
  	
  	<environments default="development">
@@ -27,7 +27,8 @@
  	</environments>
  	<mappers>
  		<mapper resource="dao/UserMapper.xml"/>
-
+		<mapper resource="dao/RoomMapper.xml"/>
+		<mapper resource="dao/OrderMapper.xml"/>
  	</mappers>
 	 
 	 </configuration>

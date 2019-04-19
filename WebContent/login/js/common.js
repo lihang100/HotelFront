@@ -10,7 +10,7 @@ $(document).ready(function(){
 		rules:{
 			username:{
 				required:true,//必填
-				minlength:6, //最少6个字符
+				minlength:2, //最少6个字符
 				maxlength:32,//最多20个字符
 			},
 			password:{
@@ -23,13 +23,13 @@ $(document).ready(function(){
 		messages:{
 			username:{
 				required:"必须填写用户名",
-				minlength:"用户名至少为3个字符",
+				minlength:"用户名至少为2个字符",
 				maxlength:"用户名至多为32个字符",
 				remote: "用户名已存在",
 			},
 			password:{
 				required:"必须填写密码",
-				minlength:"密码至少为3个字符",
+				minlength:"密码至少为6个字符",
 				maxlength:"密码至多为32个字符",
 			},
 		},
@@ -40,7 +40,7 @@ $(document).ready(function(){
 		rules:{
 			username:{
 				required:true,//必填
-				minlength:6, //最少6个字符
+				minlength:2, //最少6个字符
 				maxlength:32,//最多20个字符
 				remote:{
 					url:"http://kouss.com/demo/Sharelink/remote.json",//用户名重复检查，别跨域调用
@@ -85,7 +85,7 @@ $(document).ready(function(){
 		messages:{
 			username:{
 				required:"必须填写用户名",
-				minlength:"用户名至少为6个字符",
+				minlength:"用户名至少为2个字符",
 				maxlength:"用户名至多为32个字符",
 				remote: "用户名已存在",
 			},
@@ -109,8 +109,8 @@ $(document).ready(function(){
 			},
 			ID_number:{
                 required:"请输入身份证号",
-                minlength:"密码至少为18个字符",
-                maxlength:"密码至多为18个字符",
+                minlength:"身份证号为18个字符",
+                maxlength:"身份证号为18个字符",
 
 			},
             sex:{

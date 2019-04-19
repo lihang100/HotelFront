@@ -16,42 +16,50 @@ import pojo.User;
 import utile.DoDate;
 
 public class UserService {
-	private static UserMapper mapper;
-	static{
+	private UserMapper mapper;
+	public UserService() {
 		String resource = "mybatis-confjg.xml";
-		String uname=null;
-		
+		String uname = null;
+
 		List<User> list = new ArrayList<User>();
 		SqlSession sqlSession = null;
 		try {
-			
 			InputStream is = Resources.getResourceAsStream(resource);
-			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);			
-			sqlSession = factory.openSession(true);			
-			mapper = sqlSession.getMapper(UserMapper.class);		
-				/*
-				 * User user = mapper.selectById(2); uname = user.getUname();
-				 */
+			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
+			sqlSession = factory.openSession(true);
+			mapper = sqlSession.getMapper(UserMapper.class);
+			/*
+			 * User user = mapper.selectById(2); uname = user.getUname();
+			 */
 		} catch (IOException e) {
-		
 			e.printStackTrace();
 		}
 	}
-	//id²éÑ¯¶ÔÏó
+
+	// idï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	public User selectById(int id) {
-		
 		return mapper.selectById(id);
 	}
-	
-	//´æ´¢¶ÔÏó
-	public void updateUser(User user) {
-		
-		 
-		 mapper.updateUser(user);
-		
-	}
-	
-	
 
-	
+	// ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½
+	public void updateUser(User user) {
+		mapper.updateUser(user);
+	}
+
+	// æŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·fu
+	public List<User> selectAll() {
+		return mapper.selectAll();
+	}
+
+	//æ·»åŠ ç”¨æˆ·fu
+	public void addUser(User user) {
+		mapper.addUser(user);
+	}
+	// æµ‹è¯•fu
+	public static void main(String[] args) {
+		UserService u = new UserService();
+		List<User> list = u.selectAll();
+		System.out.println(list);
+	}
+
 }

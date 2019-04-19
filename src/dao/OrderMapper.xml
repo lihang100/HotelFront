@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="dao.OrderDao">
+ <!--  -->
+ 	<resultMap type="orderTime" id="orderTimeMap">
+ 	</resultMap>
+
+ 	<!-- 根据房间号查询房间订单的开始和离开时间 -->
+ 	<select id="selectByRid" parameterType="int"  resultMap="orderTimeMap">	
+		SELECT starttime,endtime FROM `order` WHERE rid=#{rid} AND `status`='完成'
+ 	</select>
+ 	
+ 	<select id="add" parameterType="order">
+ 		INSERT INTO `order` (rid,uid,eid,starttime,endtime,eprice,`status`,booktime,remark)
+ 		 VALUES(#{rid},#{uid},#{eid},#{starttime},#{endtime},#{eprice},#{status},#{booktime},#{remark})
+ 	</select>
+ </mapper>
