@@ -19,7 +19,7 @@
           media="all">
 
 
-    <title></title>
+    <title>预定</title>
     <style>
         *{ padding: 0px; margin: 0px}
         a{text-decoration: none}
@@ -118,9 +118,9 @@
 
         <div class="d2">
             <span style="font-size: 20px;top: 5px" class="glyphicon glyphicon-user"></span>
-            <a style="text-decoration: none; line-height:40px;color: rgba(93, 46, 20, 0.92)">&nbsp;如来啊啊&nbsp;</a>
+            <a style="text-decoration: none; line-height:40px;color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
             <span>&nbsp;|</span>
-            <a style="text-decoration: none;color: rgba(93, 46, 20, 0.92)"> &nbsp;退出</a>
+            <a href="../login/login.jsp" style="text-decoration: none;color: rgba(93, 46, 20, 0.92)"> &nbsp;注销</a>
 
 
         </div>
@@ -162,10 +162,10 @@
             <a >收藏酒店</a>
         </div>
         <div class="myOrder">
-        <form>
+        <form id="orderingForm">
             <div class="form-group " style="float: left;margin-left: 20px">
 
-                <select class="form-control  "   id="sel1" style="width: 250px;height: 38px ;">
+                <select name="type" class="form-control  "   id="sel1" style="width: 250px;height: 38px ;">
                     <option>标准间</option>
                     <option>豪华间</option>
                     <option>双人标间</option>
@@ -180,16 +180,16 @@
             </div>
 
         <div class="layui-input-inline" style="float: left;margin-left: 20px">
-            <input type="text" class="layui-input" id="test1" placeholder="入住日期" style="width: 200px">
+            <input type="text" name="starttime" class="layui-input" id="test1" placeholder="入住日期" style="width: 200px">
         </div>
             <div class="layui-input-inline" style="float: left;">
 
-                <input type="text" class="layui-input" id="test2" placeholder="离房日期" style="margin-left: 20px">
+                <input type="text" name="endtime" class="layui-input" id="test2" placeholder="离房日期" style="margin-left: 20px">
             </div>
         </form>
 
             <div class="yuding" >
-            <a style="color: white;text-decoration: none">立即预定</a>
+            <a id="ordering" style="color: white;text-decoration: none">立即预定</a>
             </div>
             <p style="margin-top: 60px;margin-left: 20px;">房间介绍</p>
 
@@ -552,8 +552,25 @@
 <script src="js/jquery-3.3.1.js"></script>
 <script src="layui-v2.4.5/layui/layui.js" charset="utf-8"></script>
 <script>
+	
+	//傅
+	$("#ordering").click(function(){
+		var orderList =  $("#orderingForm").serializeArray();
+		console.log(orderList);
+		$.getJSON("../OrderingServlet",orderList,function(data){
+			console.log(data.result);
+			if(data.result=='成功'){
+				alert("预定成功");
+				window.location.href="Order.jsp";
+			}else{
+				alert("您预定的时间内此房间类型已预定满，请重新选择");
+			}
+		})
+	})
+	
+	
 
-
+	//李航
     layui.use('laydate', function() {
         var laydate = layui.laydate;
         laydate.render({

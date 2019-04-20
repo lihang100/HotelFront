@@ -9,11 +9,24 @@
 
  	<!-- 根据房间号查询房间订单的开始和离开时间 -->
  	<select id="selectByRid" parameterType="int"  resultMap="orderTimeMap">	
-		SELECT starttime,endtime FROM `order` WHERE rid=#{rid} AND `status`='完成'
+		SELECT starttime,endtime FROM `order` WHERE rid=#{rid} AND `status`='已预定'
  	</select>
  	
  	<select id="add" parameterType="order">
  		INSERT INTO `order` (rid,uid,eid,starttime,endtime,eprice,`status`,booktime,remark)
  		 VALUES(#{rid},#{uid},#{eid},#{starttime},#{endtime},#{eprice},#{status},#{booktime},#{remark})
+ 	</select>
+ 	
+ 	<!-- 查询某个用户的订单 -->
+ 	<select id="selectByUid" parameterType="int" resultType="order">
+ 		select * from `order` where uid=#{uid} ORDER BY booktime
+ 		<if test="index!=0 and pageSize!=0"> 
+ 			limit #{index},#{pageSize}
+ 		</if>
+ 		 
+ 	</select>
+ 	<!-- 取消订单 -->
+ 	<select id="update" parameterType="int">
+ 		update `order` set `status`='已退订' where oid=#{oid}
  	</select>
  </mapper>

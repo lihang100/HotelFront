@@ -188,7 +188,7 @@
 			<h2>预定</h2>
 		</div>
 		<div class="col-md-9 book-form">
-			<form id="orderForm" action="" method="post">
+			<form id="orderForm" action="Ordering.jsp" method="post">
 				<div class="fields-w3ls form-left-agileits-w3layouts ">
 					<p>房间类型</p>
 					<select id="type" class="form-control">

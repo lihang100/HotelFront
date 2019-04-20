@@ -37,9 +37,23 @@ public class OrderService {
 		mapper.add(order);
 	}
 	
+	//查询某个用户的订单
+	public List<Order> selectByUid(int uid,int currentPage,int pageSize) {
+		int index = (currentPage-1)*pageSize;
+		
+		return mapper.selectByUid(uid,index,pageSize);
+	}
+	//取消订单
+	public void cancel(int oid) {
+		mapper.update(oid);
+	}
+	
 	public static void main(String[] args) {
 		OrderService os = new OrderService();
-		List<OrderTime> list = os.selectByRid(101);
-		System.out.println(list);
+//		List<OrderTime> list = os.selectByRid(101);
+//		System.out.println(list);
+//		List<Order> list = os.selectByUid(2,1,10);
+//		System.out.println(list);
+		os.cancel(1);
 	}
 }

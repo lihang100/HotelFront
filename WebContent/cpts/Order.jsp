@@ -7,8 +7,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css" media="all"/>
 
-    <title></title>
+    <title>订单</title>
     <style>
         *{ padding: 0px; margin: 0px}
         a:hover{cursor:pointer ;}
@@ -30,7 +31,7 @@
         .pp a{text-decoration: none;color: #646464  }
         .pp a:visited{color: red}
 
-        .my{position: absolute;width: 1200px;height: 600px;right: 0px;top: 150px;}
+        .my{position: absolute;width: 1000px;height: 600px;right: 100px;top: 130px;}
         .my th{text-align: center}
         .xinxi ul div{float: left;}
         .xinxi ul{margin-top: 20px;margin-left: 80px}
@@ -69,9 +70,9 @@
 
         <div class="d2">
             <span style="font-size: 20px;top: 5px" class="glyphicon glyphicon-user"></span>
-            <a style="text-decoration: none; line-height:40px;color: rgba(93, 46, 20, 0.92)">&nbsp;如来啊啊&nbsp;</a>
+            <a style="text-decoration: none; line-height:40px;color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
             <span>&nbsp;|</span>
-            <a style="text-decoration: none;color: rgba(93, 46, 20, 0.92)"> &nbsp;退出</a>
+            <a href="../login/login.jsp" style="text-decoration: none;color: rgba(93, 46, 20, 0.92)"> &nbsp;注销</a>
 
 
         </div>
@@ -119,21 +120,7 @@
 
 
     <div class="my" >
-       <table style="width:100%;" border="1">
-           <tr >
-               <th>订单号</th>
-               <th>房间号</th>
-               <th>接待员编号</th>
-               <th>入住日期</th>
-               <th>退房日期</th>
-               <th>预定日期</th>
-               <th>订单状态</th>
-               <th>订单总价</th>
-               <th>操作</th>
-           </tr>
-
-
-       </table>
+       <table class="layui-hide" id="orderTable" lay-filter="demo"></table>
     </div>
 
     <div class="wei">
@@ -148,7 +135,54 @@
     </div>
 
 <script src="js/jquery-3.3.1.js"></script>
+<script src="layui-v2.4.5/layui/layui.js"></script>
+<script type="text/html" id="barDemo">
+	<a class="layui-btn layui-btn-primary  layui-btn-xs" lay-event="detail">查看</a>
+</script>
 <script>
+	layui.use(['table'],function(){
+		var table = layui.table;
+		
+		var orderTable = table.render({
+			elem:'#orderTable'
+			,url:'../ShowOrderServlet'
+			,cols:[[
+				{field:'oid', width:90,align:'center', title: '订单编号',sort: true}
+                ,{field:'rid', width:90,align:'center', title: '房间号',sort: true}
+                ,{field:'starttime', width:140,align:'center', title: '入住时间'}
+                ,{field:'endtime', width:140,align:'center', title: '离开时间'}
+                ,{field:'eprice', width:110,align:'center', title: '价格（元）',sort: true}
+                ,{field:'booktime', width:140,align:'center', title: '预定时间'}
+                ,{field:'status', width:80,align:'center', title: '状态'}
+                ,{field:'remark', width:90,align:'center', title: '备注'}
+                ,{title:'操作',fixed:'right',width:120,align:'center',toolbar:'#barDemo'}
+			]]
+			,page:true
+			,even: true
+			,done : function(res, curr, count){
+		        
+		        tableList=res.data;
+		       $('th').css({'background-color': '#5792c6', 'color': '#fff','font-weight':'bold'})
+		      
+		    }
+		});
+		 //监听工具条
+        table.on('tool(demo)',function(obj){
+        	var data = obj.data;
+        	var event = obj.event;
+        	if(event=='detail'){//查看
+        		var ss = "订单编号："+data.oid+"<br/>房间号："+data.rid
+        		+"<br/>用户id："+data.uid+"<br/>员工id："+data.eid
+        		+"<br/>入住时间："+data.starttime+"<br/>离开时间："+data.endtime
+        		+"<br/>价格（元）："+data.eprice+"<br/>状态："+data.status
+        		+"<br/>预定时间："+data.booktime+"<br/>备注："+data.remark;
+        		layer.alert(ss);
+        	}
+        });
+		
+	})
+
+	
     $(".con span").mouseover(function(){
         $(this).siblings("div").css("background-color","#b01e21")
     });

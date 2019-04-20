@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -33,8 +34,10 @@ public class OrderingServlet extends HttpServlet {
 		String result = "失败";
 		
 		String type = request.getParameter("type");
-		String starttime = changeDateStr(request.getParameter("starttime"));
-		String endtime = changeDateStr(request.getParameter("endtime"));
+		String starttime = request.getParameter("starttime");
+		String endtime = request.getParameter("endtime");
+//		System.out.println(starttime);
+//		System.out.println(endtime);
 		Date inday = DoDate.getDate(starttime);
 		Date outday = DoDate.getDate(endtime);
 		//取出会话中的用户对象
@@ -51,19 +54,27 @@ public class OrderingServlet extends HttpServlet {
 			int rid = roomid.getRid();
 			//通过房间号找到这个号现在已被预订的订单的开始离开时间
 			List<OrderTime> otlist = os.selectByRid(rid);
-			for(OrderTime orderTime : otlist) {
-				//检查每个开始离开时间和要预定的时间的冲突
-				boolean b = DoDate.checkDate(orderTime.getStarttime(), orderTime.getEndtime(), inday, outday);
-				//不冲突就把这个可用的房间号存入之前设置好的集合中
-				if(b) {
-					rids.add(rid);
+			if(otlist.size()==0) {
+				rids.add(rid);
+			}else {
+				for(OrderTime orderTime : otlist) {
+					//检查每个开始离开时间和要预定的时间的冲突
+					boolean b = DoDate.checkDate(orderTime.getStarttime(), orderTime.getEndtime(), inday, outday);
+					//不冲突就把这个可用的房间号存入之前设置好的集合中
+					if(b) {
+						System.out.println(rid);
+						rids.add(rid);
+					}
 				}
 			}
 		}
+		System.out.println(rids.toString());
 		//如果等于0说明没有房间可以预定了
 		if(rids.size()==0) {
+			System.out.println("没有房间");
 			result = "失败";
 		}else {//可以预定
+			System.out.println("有房间");
 			double random = Math.random();
 			int i = (int)(random*rids.size());//从可预订的房间号中随机一个
 			//房间号
@@ -75,7 +86,7 @@ public class OrderingServlet extends HttpServlet {
 			//总价
 			int totlePrice = price*days;
 			//状态
-			String status = "预定";
+			String status = "已预定";
 			//预定日期
 			Date booktime = new Date();
 			//用户id

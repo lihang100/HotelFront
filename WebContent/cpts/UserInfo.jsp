@@ -25,7 +25,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="../layui-v2.4.5/layui/css/layui.css"
+<link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css"
 	media="all">
 
 <title></title>
@@ -298,10 +298,10 @@ a:hover {
 		<div class="d2">
 			<span style="font-size: 20px; top: 5px"
 				class="glyphicon glyphicon-user"></span> <a
-				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;如来啊啊&nbsp;</a>
-			<span>&nbsp;|</span> <a
+				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
+			<span>&nbsp;|</span> <a href="../login/login.jsp"
 				style="text-decoration: none; color: rgba(93, 46, 20, 0.92)">
-				&nbsp;退出</a>
+				&nbsp;注销</a>
 
 
 		</div>
@@ -353,14 +353,13 @@ a:hover {
 		</div>
 	</div>
 	<%
-		session.setAttribute("uid", 5);		
-		UserService us = new UserService();
-		User user = us.selectById(5);
+		User user=(User)session.getAttribute("user");	
+		
 		Date date = user.getUborn();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String newdate = sdf.format(date);
 		String uname = user.getUname();
-		session.setAttribute("user", user);
+		//session.setAttribute("user", user);
 	%>
 
 	<div class="my">
@@ -379,7 +378,7 @@ a:hover {
 			</div>
 		</div>
 		<form id="userform" action="">
-			<input type="hidden" name="uid" value="${uid}">
+			<input type="hidden" name="uid" value="${user.uid}">
 			<div class="xinxi">
 				<ul style="margin-top: 40px">
 					<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名:</div>
@@ -469,7 +468,7 @@ a:hover {
 	</div>
 
 	<script src="js/jquery-3.3.1.js"></script>
-	<script src="../layui-v2.4.5/layui/layui.js" charset="utf-8"></script>
+	<script src="layui-v2.4.5/layui/layui.js" charset="utf-8"></script>
 	<script>
 		$("#test1").hide();
 

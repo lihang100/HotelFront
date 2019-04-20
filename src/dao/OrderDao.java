@@ -13,4 +13,10 @@ public interface OrderDao {
 	
 	//添加订单
 	public void add(Order order);
+	
+	//通过uid查询
+	public List<Order> selectByUid(@Param("uid")int uid,@Param("index")int index,@Param("pageSize")int pageSize);
+	
+	//用户取消订单
+	public void update(@Param("oid")int oid);
 }
