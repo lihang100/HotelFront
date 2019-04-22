@@ -18,5 +18,7 @@ public interface UserMapper {
 	List<User> selectAll();
 	//添加用户
 	void addUser(User user);
+	//改用户头像和用户名
+	public void change(User user);
 	
 }

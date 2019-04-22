@@ -118,7 +118,7 @@
 
         <div class="d2">
             <span style="font-size: 20px;top: 5px" class="glyphicon glyphicon-user"></span>
-            <a style="text-decoration: none; line-height:40px;color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
+            <a href="UserInfo.jsp" style="text-decoration: none; line-height:40px;color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
             <span>&nbsp;|</span>
             <a href="../login/login.jsp" style="text-decoration: none;color: rgba(93, 46, 20, 0.92)"> &nbsp;注销</a>
 
@@ -140,7 +140,7 @@
             <p>订单中心<span class="glyphicon glyphicon-menu-down" style="padding-left: 10px;color: #985f0d;font-size: 15px"></span></p>
         </div >
         <div class="pp">
-            <a   class="bb">我的订单</a><br/>
+            <a href="Order.jsp" class="bb">我的订单</a><br/>
         </div>
         <div class="dian">
             <p>我的账户<span class="glyphicon glyphicon-menu-down" style="padding-left: 10px;color: #985f0d;font-size: 15px"></span></p>
@@ -152,7 +152,7 @@
             <p>个人中心<span class="glyphicon glyphicon-menu-down" style="padding-left: 10px;color: #985f0d;font-size: 15px"></span></p>
         </div>
         <div class="pp">
-            <a >我的信息</a><br/>
+            <a href="UserInfo.jsp">我的信息</a><br/>
             <a> 我的点评</a>
         </div>
         <div class="dian">

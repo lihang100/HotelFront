@@ -31,4 +31,12 @@
  		VALUES(#{uname},'',#{ugender},#{upassword},#{uidentity},#{uemail},#{uphone})
  		
  	</select>
+ 	<!-- 改头像和用户名 -->
+ 	<select id="change" parameterType="user">
+ 		UPDATE `user` SET upicture=#{upicture}
+ 		<if test="uname!=null and uname!=''">
+ 		uname=#{uname}
+ 		</if>
+ 	 	WHERE uid=#{uid}
+ 	</select>
  </mapper>

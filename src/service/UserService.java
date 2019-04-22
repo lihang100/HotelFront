@@ -55,6 +55,10 @@ public class UserService {
 	public void addUser(User user) {
 		mapper.addUser(user);
 	}
+	//改头像和用户名
+	public void change(User user) {
+		mapper.updateUser(user);
+	}
 	// 测试fu
 	public static void main(String[] args) {
 		UserService u = new UserService();

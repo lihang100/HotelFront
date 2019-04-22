@@ -297,7 +297,7 @@ a:hover {
 
 		<div class="d2">
 			<span style="font-size: 20px; top: 5px"
-				class="glyphicon glyphicon-user"></span> <a
+				class="glyphicon glyphicon-user"></span> <a href="UserInfo.jsp"
 				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
 			<span>&nbsp;|</span> <a href="../login/login.jsp"
 				style="text-decoration: none; color: rgba(93, 46, 20, 0.92)">
@@ -322,7 +322,7 @@ a:hover {
 			</p>
 		</div>
 		<div class="pp">
-			<a class="bb">我的订单</a><br />
+			<a href="Order.jsp" class="bb">我的订单</a><br />
 		</div>
 		<div class="dian">
 			<p>
@@ -340,7 +340,7 @@ a:hover {
 			</p>
 		</div>
 		<div class="pp">
-			<a style="color: #b01e21">我的信息</a><br /> <a> 我的点评</a>
+			<a href="UserInfo.jsp" style="color: #b01e21">我的信息</a><br /> <a> 我的点评</a>
 		</div>
 		<div class="dian">
 			<p>

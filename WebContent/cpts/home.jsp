@@ -66,7 +66,7 @@
 					 <c:if test="${user ne null }">
 						<div style="cursor: pointer;">
 							<a href="UserInfo.jsp">${user.uname }</a>&nbsp;|&nbsp;<a
-								href="home.jsp">注销</a>
+								href="../login/login.jsp">注销</a>
 						</div>
 					</c:if>
 					</li>

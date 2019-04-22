@@ -29,6 +29,7 @@
  		<mapper resource="dao/UserMapper.xml"/>
 		<mapper resource="dao/RoomMapper.xml"/>
 		<mapper resource="dao/OrderMapper.xml"/>
+		<mapper resource="dao/CommentMapper.xml"/>
  	</mappers>
 	 
 	 </configuration>
