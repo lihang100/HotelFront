@@ -20,13 +20,18 @@
 <html>
 <head lang="en">
 <meta charset="UTF-8">
-<link href="css/bootstrap.css" rel="stylesheet">
-<meta name="renderer" content="webkit">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css"
-	media="all">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css"
+          media="all">
 
 <title></title>
 <style>
@@ -133,6 +138,7 @@ a:hover {
 	height: 600px;
 	right: 0px;
 	top: 150px;
+	margin-left: 50px;
 }
 
 .elent {
@@ -254,6 +260,9 @@ a:hover {
 	margin-top: 20px;
 	color: #430752
 }
+.btn-primary{background-color: white !important;}
+.btn-primary:hover{background-color: white !important;}
+.modal-content{ width: 300px!important;}
 </style>
 
 </head>
@@ -297,7 +306,7 @@ a:hover {
 
 		<div class="d2">
 			<span style="font-size: 20px; top: 5px"
-				class="glyphicon glyphicon-user"></span> <a href="UserInfo.jsp"
+				class="glyphicon glyphicon-user"></span> <a
 				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
 			<span>&nbsp;|</span> <a href="../login/login.jsp"
 				style="text-decoration: none; color: rgba(93, 46, 20, 0.92)">
@@ -322,7 +331,7 @@ a:hover {
 			</p>
 		</div>
 		<div class="pp">
-			<a href="Order.jsp" class="bb">我的订单</a><br />
+			<a class="bb">我的订单</a><br />
 		</div>
 		<div class="dian">
 			<p>
@@ -340,7 +349,7 @@ a:hover {
 			</p>
 		</div>
 		<div class="pp">
-			<a href="UserInfo.jsp" style="color: #b01e21">我的信息</a><br /> <a> 我的点评</a>
+			<a style="color: #b01e21">我的信息</a><br /> <a> 我的点评</a>
 		</div>
 		<div class="dian">
 			<p>
@@ -354,7 +363,6 @@ a:hover {
 	</div>
 	<%
 		User user=(User)session.getAttribute("user");	
-		
 		Date date = user.getUborn();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String newdate = sdf.format(date);
@@ -364,7 +372,29 @@ a:hover {
 
 	<div class="my">
 		<div style="height: 100px; border-bottom: 1px gray solid;">
-			<div class="elent"></div>
+		
+			    <div type="button" class="elent btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 			<div style="float: left; margin-left: 20px; margin-top: 20px;">
 				<span style="font-size: 20px">${user.uname }</span>
 			</div>

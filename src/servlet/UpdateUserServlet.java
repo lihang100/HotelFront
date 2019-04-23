@@ -42,8 +42,7 @@ public class UpdateUserServlet extends HttpServlet {
 		//{"name":name,"id":id,"user":["uid":uid]}
 		PrintWriter out = response.getWriter();
 		String s ="{\"result\":\"正确\"}";
-		System.out.println(s);
-		System.out.println(uemail+" xxx"+uphone);
+	
 		out.print(s);
 	}
 
