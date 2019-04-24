@@ -8,8 +8,8 @@
  	<select id="show" resultType="Comment">
  		SELECT cid,uname,upicture,content,ctime 
  		FROM `comment` c JOIN `user` u ON c.uid=u.uid ORDER BY ctime DESC
- 		<if test="index!=0 and pageSize!=0">
- 			limit #{index},#{pagesize}
+ 		<if test="index!=-1 and pageSize!=0">
+ 			limit #{index},#{pageSize}
  		</if>
  	</select>
  	

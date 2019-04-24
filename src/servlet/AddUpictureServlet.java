@@ -92,8 +92,7 @@ public class AddUpictureServlet extends HttpServlet {
 		user.setUpicture(uploadFileName);
 		UserService us = new UserService();
 		us.change(user);
-		System.out.println(11);
-		response.sendRedirect("/cpts/UserInfo.jsp");
+		response.sendRedirect("/Webwangye/cpts/UserInfo.jsp");
 		
 	}
 

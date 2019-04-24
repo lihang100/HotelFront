@@ -10,10 +10,10 @@
 <body>
 
 <div class="register-container">
-	<h1>ShareLink</h1>
+	<h1>注册</h1>
 	
 	<div class="connect">
-		<p>Link the world. Share to world.</p>
+		<p>请填写基本信息</p>
 	</div>
 	
 	<form action="" method="post" id="registerForm">
@@ -60,11 +60,11 @@
 <script>
 	$("#submit").click(function(){
 		var formArr = $("#registerForm").serializeArray();
-		console.log(formArr);
+		//console.log(formArr);
 		$.getJSON("../registerServlet",formArr,function(data){
 			
 			if(data.result=="正确"){
-				
+				alert("注册成功")
 				window.location.href="login.jsp";
 			}else{
 				alert("注册失败");

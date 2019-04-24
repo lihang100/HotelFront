@@ -311,12 +311,21 @@ a:hover {
 		</div>
 
 		<div class="d2">
-			<span style="font-size: 20px; top: 5px"
+			<c:if test="${user eq null }">
+				<div style="cursor: pointer;">
+					<a href="../login/login.jsp">登录</a>&nbsp;&nbsp;
+					<a href="../login/register.jsp">注册</a>
+				</div>
+			</c:if>
+			<c:if test="${user ne null }">
+				<span style="font-size: 20px; top: 5px"
 				class="glyphicon glyphicon-user"></span> <a
 				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
 			<span>&nbsp;|</span> <a href="../login/login.jsp"
 				style="text-decoration: none; color: rgba(93, 46, 20, 0.92)">
 				&nbsp;注销</a>
+			</c:if>
+			
 
 
 		</div>
@@ -380,7 +389,7 @@ a:hover {
 		<div style="height: 100px; border-bottom: 1px gray solid;">
 		
 			    <div type="button" class="elent btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-			    <img src="img/t1.png" class="title"/>
+			    <img src="<%=request.getContextPath()%>/upload/${user.upicture }" class="title"/>
 
         </div>
 
@@ -392,13 +401,18 @@ a:hover {
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                     </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                     <form action="../addUpictureServlet" method="post" enctype="multipart/form-data">
+	                    <div class="modal-body">
+	                        <input type="hidden" name="uid" value=${user.uid }><br>
+							用户头像更改：<input type="file" name="upicture"><br>	                        
+	                    </div>
+	                    <div class="modal-footer">
+	                    	<input type="submit" value="保存更改">
+	                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	                        <button type="button" class="btn btn-primary">保存更改</button> -->
+	                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>

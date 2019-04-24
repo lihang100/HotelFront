@@ -18,6 +18,15 @@ public class DoDate {
 		}
 		return newdate;
 	}
+	//Date转字符串
+	public static String datetostr(Date date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		if(date!=null) {
+			return sdf.format(date);
+		}
+		return null;
+		
+	}
 	//判断两个时间段有没有交错
 	public static boolean checkDate(Date start,Date end,Date inday,Date outday) {
 		
@@ -50,5 +59,12 @@ public class DoDate {
 			count++;
 		}
 		return count;
+	}
+	
+	public static void main(String[] args) {
+		String string = DoDate.datetostr(new Date());
+		System.out.println(string);
+		Date date = DoDate.getDate(string);
+		System.out.println(date);
 	}
 }

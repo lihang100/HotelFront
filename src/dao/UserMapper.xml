@@ -18,7 +18,7 @@
  	<select id="updateUser" parameterType="user" >
  	UPDATE USER SET 
  	utruename=#{utruename}, ugender=#{ugender},
- 	uidentity=#{uidentity},uemail=#{uemail},uborn=#{uborn},uphone=#{uphone},upicture=#{upicture}
+ 	uidentity=#{uidentity},uemail=#{uemail},uborn=#{uborn},uphone=#{uphone}
  	 WHERE uid=#{uid}
  	</select>
  	<!-- 查所有用户。傅 -->
@@ -35,7 +35,7 @@
  	<select id="change" parameterType="user">
  		UPDATE `user` SET upicture=#{upicture}
  		<if test="uname!=null and uname!=''">
- 		uname=#{uname}
+ 		,uname=#{uname}
  		</if>
  	 	WHERE uid=#{uid}
  	</select>

@@ -57,7 +57,7 @@ public class UserService {
 	}
 	//改头像和用户名
 	public void change(User user) {
-		mapper.updateUser(user);
+		mapper.change(user);
 	}
 	// 测试fu
 	public static void main(String[] args) {

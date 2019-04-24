@@ -33,16 +33,15 @@ public class ShowCommentServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		
 		int p = Integer.parseInt(request.getParameter("page"));
-		int l = Integer.parseInt(request.getParameter("limit"));
 		
 //		User user = (User)request.getSession().getAttribute("user");
 //		int uid = user.getUid();
 		
 		CommentService cs =new CommentService();
-		Page<Comment> page = cs.show(p, l);
+		Page<Comment> page = cs.show(p, 4);
 		
 		request.getSession().setAttribute("commentPage", page);
-		response.sendRedirect("/cpts/Comment.jsp");
+		response.sendRedirect("/Webwangye/cpts/comment.jsp");
 		
 		//int count = page.getTotle();
 		

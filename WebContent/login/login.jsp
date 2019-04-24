@@ -17,7 +17,7 @@
 	<h1>欢迎来到XX酒店</h1>
 	
 	<div class="connect">
-		<p>www.XXXXXX.com</p>
+		<p>输入您的邮箱和密码</p>
 	</div>
 	
 	<form action="" method="post" id="loginForm">
@@ -49,18 +49,16 @@
 		var uemail = $("input[name=username]").val();
 		var upassword = $("input[name=password]").val();
 		$.getJSON("../loginServlet",{"uemail":uemail,"password":upassword},function(data){
-			
 			if(data.result=="正确"){
 				var preUrl = document.referrer;
-				alert(preUrl);
+				//alert(preUrl);
+				alert("登录成功");
 				if(preUrl!="http://localhost:8080/Webwangye/login/register.jsp"){
 					self.location=document.referrer;
 				}else{
 					//history.go(-2);
 					window.location.href="../cpts/home.jsp";
 				}
-				
-				
 			}else{
 				alert("邮箱账号或密码不正确");
 			}

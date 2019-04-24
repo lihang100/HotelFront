@@ -16,7 +16,7 @@ import pojo.Comment;
 import pojo.Order;
 import utile.OrderTime;
 import utile.Page;
-//房间
+
 public class CommentService {
 	private CommentDao mapper;
 	public CommentService() {
@@ -48,6 +48,10 @@ public class CommentService {
 	public static void main(String[] args) {
 		CommentService cs = new CommentService();
 		//System.out.println(cs.show(1, 4));
-		cs.add(19, "今天天气很好，旅游很不错，住到这个酒店很愉快，整个心情都很好呢，下次再来", new Date());
+		//cs.add(19, "今天天气很好，旅游很不错，住到这个酒店很愉快，整个心情都很好呢，下次再来", new Date());
+		Page<Comment> list = cs.show(1, 4);
+		for(Comment c : list.getData()) {
+			System.out.println(c);
+		}
 	}
 }

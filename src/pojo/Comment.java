@@ -7,7 +7,7 @@ public class Comment {
 	private String uname;//用户名
 	private String upicture;//用户头像
 	private String content;//内容
-	private Date ctime;//时间
+	private String ctime;//时间
 	
 	
 	@Override
@@ -18,7 +18,7 @@ public class Comment {
 	public Comment() {
 		super();
 	}
-	public Comment(int cid, String uname, String upicture, String content, Date ctime) {
+	public Comment(int cid, String uname, String upicture, String content, String ctime) {
 		super();
 		this.cid = cid;
 		this.uname = uname;
@@ -50,10 +50,10 @@ public class Comment {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getCtime() {
+	public String getCtime() {
 		return ctime;
 	}
-	public void setCtime(Date ctime) {
+	public void setCtime(String ctime) {
 		this.ctime = ctime;
 	}
 	
