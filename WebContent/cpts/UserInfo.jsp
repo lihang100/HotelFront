@@ -150,7 +150,13 @@ a:hover {
 	margin-left: 20px;
 	float: left
 }
-
+.title{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-left: -17px;
+            margin-top: -11px;
+        }
 .yan {
 	width: 600px;
 	border-left: 1px gray solid;
@@ -374,6 +380,7 @@ a:hover {
 		<div style="height: 100px; border-bottom: 1px gray solid;">
 		
 			    <div type="button" class="elent btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			    <img src="img/t1.png" class="title"/>
 
         </div>
 

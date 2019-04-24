@@ -79,9 +79,9 @@
             margin-top: 20px;
             color: #430752
         }
-        .li{margin-top: 10px;width: 90%;height: 120px;border: 1px solid gray}
+        .li{margin-top: 10px;width: 90%;height: 120px;border-style: none none solid none;border-width: 1px}
         .img{width: 60px;height:60px;border-radius: 50%;}
-        .date{margin-left: 625px;}
+        .date{width: 100px;margin-left: 800px;margin-top: -38px;margin-bottom: 10px}
         .pingname{margin-left: 20px}
         .text{width: 800px;margin-left: 50px}
 
@@ -159,7 +159,9 @@
         <ul>
             <li class="li">
                 <img src="img/t1.png" class="img"/><span class="pingname" >name;;;;;;;;;</span>
-                <span class="date" >2019-4-23</span>
+                <div class="date">
+                    <span>2019-4-23</span>
+                </div>
                 <div class="text" ><span>嵌套的路由/视图表模块化的、基于组件的路由配置路由参数、查询、通配符基于 Vue.js 过渡系统的视图过渡效果细粒度的导航控制
 </span></div>
 
